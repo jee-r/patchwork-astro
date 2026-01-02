@@ -15,5 +15,11 @@
     "@vercel/kv": "^3.0.0",
     "astro": "^5.16.6",
     "sharp": "^0.34.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "esbuild"
+    ]
   }
 }
