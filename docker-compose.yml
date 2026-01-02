@@ -1,0 +1,25 @@
+services:
+  patchwork-astro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    container_name: patchwork-astro
+    ports:
+      - '3000:3000'
+    environment:
+      - LASTFM_API_KEY=${LASTFM_API_KEY}
+      - NODE_ENV=production
+    volumes:
+      - patchwork-cache:/app/cache
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'node', '-e', "require('http').get('http://localhost:3000', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  patchwork-cache:
+    driver: local

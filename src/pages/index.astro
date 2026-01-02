@@ -1,16 +1,276 @@
 ---
-
+import '../styles/main.css';
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Albums Patchwork Generator</title>
+    <meta name="description" content="A tool that generates a patchwork image based on the covers of your Last.fm or ListenBrainz top albums. Simple, free, and it works." />
+    <meta name="keywords" content="lastfm, listenbrainz, top albums generator, album collage, music patchwork" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <g id="SvgjsG1004" transform="translate(.252 .236)">
+                        <rect id="SvgjsRect1003" width="8.019" height="8.035" x="0" y="0" rx="0" ry=".772" style="display:inline;fill:#e41c61;fill-opacity:1;stroke-width:.75" />
+                        <rect id="SvgjsRect1002" width="8.019" height="8.035" x="0" y="8.635" rx="0" ry=".772" style="display:inline;fill:#191919;fill-opacity:1;stroke-width:.75" />
+                        <rect id="SvgjsRect1001" width="8.019" height="8.035" x="8.619" y="0" rx="0" ry=".772" style="display:inline;fill:#191919;fill-opacity:1;stroke-width:.75" />
+                        <rect id="SvgjsRect1000" width="8.019" height="8.035" x="8.619" y="8.635" rx="0" ry=".772" style="display:inline;fill:#e41c61;stroke-width:.75" />
+                    </g>
+                </svg>
+            </li>
+            <li><strong>Top Album <span class="lov3">Patchwork</span></strong></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <article>
+            <form id="patchworkForm">
+                <label for="username">
+                    Username
+                    <input type="text" id="username" name="username" placeholder="username" required>
+                </label>
+
+                <fieldset>
+                    <legend>Provider</legend>
+                    <label>
+                        <input type="radio" id="lastfm" name="provider" value="lastfm" checked>
+                        Last.fm
+                    </label>
+                    <label>
+                        <input type="radio" id="listenbrainz" name="provider" value="listenbrainz">
+                        ListenBrainz
+                    </label>
+                </fieldset>
+
+                <fieldset class="grid">
+                    <legend>Period</legend>
+                    <div>
+                        <label for="overall">
+                            <input type="radio" id="overall" name="period" value="overall" checked>
+                            Overall
+                        </label>
+                        <label for="7day">
+                            <input type="radio" id="7day" name="period" value="7day">
+                            7 days
+                        </label>
+                        <label for="1month">
+                            <input type="radio" id="1month" name="period" value="1month">
+                            1 Month
+                        </label>
+                    </div>
+                    <div>
+                        <label for="3month">
+                            <input type="radio" id="3month" name="period" value="3month">
+                            3 Months
+                        </label>
+                        <label for="6month">
+                            <input type="radio" id="6month" name="period" value="6month">
+                            6 Months
+                        </label>
+                        <label for="1year">
+                            <input type="radio" id="1year" name="period" value="12month">
+                            1 Year
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="grid">
+                    <div>
+                        <label for="rows">Nr. of rows
+                            <output id="rowsOutput">3</output>
+                        </label>
+                        <input type="range" min="1" max="10" value="3" id="rows" name="rows">
+                    </div>
+                    <div>
+                        <label for="cols">Nr. of columns
+                            <output id="colsOutput">3</output>
+                        </label>
+                        <input type="range" min="1" max="10" value="3" id="cols" name="cols">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <label for="imageSize">Image size in pixels</label>
+                    <input type="number" value="150" name="size" id="imageSize" min="50" max="300" />
+
+                    <label for="noborder">
+                        <input type="checkbox" name="noborder" id="noborder" />
+                        No border
+                    </label>
+                </fieldset>
+
+                <button id="submitBtn" type="submit">Generate</button>
+            </form>
+
+            <input id="messageBox" class="hidden" type="text" readonly>
+
+            <div class="hidden" id="resultContainer">
+                <h2 id="patchworkTitle"></h2>
+                <div class="patchwork">
+                    <img src="" id="patchworkImg" width="" height="" alt="Patchwork">
+                    <div>
+                        <a id="downloadBtn" role="button" class="primary" href="" download>Download</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="field-title">Image URL:</div>
+                    <div class="img-link">
+                        <div role="button" class="primary" id="copyBtn">Copy</div>
+                        <a id="patchworkLink" href="" target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div>made with <span class="lov3">&lt;3</span> by <a href="https://artz.dev" target="_blank" rel="noopener noreferrer">Jee</a></div>
+        <a class="outline contrast" href="https://github.com/jee-r/patchwork-astro" role="button">
+            Fork Me
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M2.6 10.59L8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 0 0 2 2a2 2 0 0 0 2-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2c-.18 0-.35 0-.5.07L13.93 7.5a1.98 1.98 0 0 0-1.15-2.34c-.43-.16-.88-.2-1.28-.09L9.8 3.38l.79-.78c.78-.79 2.04-.79 2.82 0l7.99 7.99c.79.78.79 2.04 0 2.82l-7.99 7.99c-.78.79-2.04.79-2.82 0L2.6 13.41c-.79-.78-.79-2.04 0-2.82Z" />
+            </svg>
+        </a>
+    </footer>
+
+    <script>
+        // Update output values for range inputs
+        const rowsInput = document.getElementById('rows') as HTMLInputElement;
+        const colsInput = document.getElementById('cols') as HTMLInputElement;
+        const rowsOutput = document.getElementById('rowsOutput') as HTMLOutputElement;
+        const colsOutput = document.getElementById('colsOutput') as HTMLOutputElement;
+
+        rowsInput.addEventListener('input', () => {
+            rowsOutput.textContent = rowsInput.value;
+        });
+
+        colsInput.addEventListener('input', () => {
+            colsOutput.textContent = colsInput.value;
+        });
+
+        // Form submission
+        const form = document.getElementById('patchworkForm') as HTMLFormElement;
+        const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+        const messageBox = document.getElementById('messageBox') as HTMLInputElement;
+        const resultContainer = document.getElementById('resultContainer') as HTMLDivElement;
+        const patchworkTitle = document.getElementById('patchworkTitle') as HTMLHeadingElement;
+        const patchworkImg = document.getElementById('patchworkImg') as HTMLImageElement;
+        const downloadBtn = document.getElementById('downloadBtn') as HTMLAnchorElement;
+        const patchworkLink = document.getElementById('patchworkLink') as HTMLAnchorElement;
+        const copyBtn = document.getElementById('copyBtn') as HTMLDivElement;
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Show loading state
+            submitBtn.setAttribute('aria-busy', 'true');
+            submitBtn.textContent = 'Generating patchwork, please wait...';
+            resultContainer.classList.add('hidden');
+            messageBox.classList.add('hidden');
+
+            // Get form data
+            const formData = new FormData(form);
+            const username = formData.get('username') as string;
+            const provider = formData.get('provider') as string;
+            const period = formData.get('period') as string;
+            const rows = formData.get('rows') as string;
+            const cols = formData.get('cols') as string;
+            const size = formData.get('size') as string;
+            const border = formData.get('noborder') ? 'none' : 'normal';
+
+            // Build URL
+            const params = new URLSearchParams({
+                username,
+                provider,
+                period,
+                rows,
+                cols,
+                size,
+                border
+            });
+
+            const imageUrl = `/patchwork.jpg?${params}`;
+
+            try {
+                // Fetch image to check if it loads
+                const response = await fetch(imageUrl);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText || 'Failed to generate patchwork');
+                }
+
+                // Get image dimensions from headers
+                const width = response.headers.get('X-Image-Width');
+                const height = response.headers.get('X-Image-Height');
+                const cacheStatus = response.headers.get('X-Cache');
+                const generationTime = response.headers.get('X-Generation-Time');
+
+                // Success!
+                submitBtn.removeAttribute('aria-busy');
+                submitBtn.textContent = 'Generate again';
+
+                // Show success message
+                messageBox.value = cacheStatus === 'HIT'
+                    ? 'Patchwork loaded from cache!'
+                    : `Patchwork generated in ${generationTime}!`;
+                messageBox.setAttribute('aria-invalid', 'false');
+                messageBox.classList.remove('hidden');
+
+                // Update result
+                const providerName = provider === 'lastfm' ? 'Last.fm' : 'ListenBrainz';
+                patchworkTitle.textContent = `${username}'s ${period} Top Albums (${providerName})`;
+
+                const fullUrl = window.location.origin + imageUrl;
+                patchworkImg.src = imageUrl;
+                patchworkImg.width = width ? parseInt(width) : 0;
+                patchworkImg.height = height ? parseInt(height) : 0;
+                downloadBtn.href = imageUrl;
+                patchworkLink.href = fullUrl;
+                patchworkLink.textContent = fullUrl;
+
+                resultContainer.classList.remove('hidden');
+
+            } catch (error) {
+                // Error handling
+                submitBtn.removeAttribute('aria-busy');
+                submitBtn.textContent = 'Try again';
+
+                messageBox.value = error instanceof Error ? error.message : 'An error occurred';
+                messageBox.setAttribute('aria-invalid', 'true');
+                messageBox.classList.remove('hidden');
+
+                console.error('Error:', error);
+            }
+        });
+
+        // Copy to clipboard
+        copyBtn.addEventListener('click', async () => {
+            const url = patchworkLink.textContent;
+
+            try {
+                await navigator.clipboard.writeText(url);
+                copyBtn.classList.add('outline');
+                setTimeout(() => {
+                    copyBtn.classList.remove('outline');
+                }, 1000);
+            } catch (error) {
+                console.error('Failed to copy:', error);
+            }
+        });
+    </script>
+</body>
 </html>

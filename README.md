@@ -1,43 +1,202 @@
-# Astro Starter Kit: Minimal
+# Patchwork
 
-```sh
-pnpm create astro@latest -- --template minimal
+Album cover collage generator for Last.fm and ListenBrainz.
+
+## Features
+
+- Dual provider support (Last.fm and ListenBrainz)
+- Customizable grid layouts (1×1 to 10×10)
+- Flexible image sizing (50-300px)
+- Optional borders between covers
+- Intelligent filesystem caching with dynamic TTL
+- Fast image processing with Sharp
+- Docker deployment ready
+
+## Tech Stack
+
+- [Astro](https://astro.build) (SSR mode)
+- [Sharp](https://sharp.pixelplumbing.com/) for image processing
+- Node.js 20
+- pnpm
+
+## Installation
+
+### Prerequisites
+
+- Node.js 20+
+- pnpm (`npm install -g pnpm`)
+- Last.fm API key ([Get one here](https://www.last.fm/api/account/create))
+
+### Local Development
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/jee-r/patchwork-astro.git
+   cd patchwork-astro
+   ```
+
+2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+
+3. Configure environment variables
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your LASTFM_API_KEY
+   ```
+
+4. Start development server
+   ```bash
+   pnpm dev
+   ```
+
+5. Open http://localhost:4321
+
+### Docker Deployment
+
+```bash
+git clone https://github.com/jee-r/patchwork-astro.git
+cd patchwork-astro
+cp .env.example .env
+# Edit .env and add your LASTFM_API_KEY
+docker-compose up -d
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Application available at http://localhost:3000
 
-## 🚀 Project Structure
+## Usage
 
-Inside of your Astro project, you'll see the following folders and files:
+1. Select a provider (Last.fm or ListenBrainz)
+2. Enter your username
+3. Choose time period (overall, 7day, 1month, 3month, 6month, 12month)
+4. Configure grid size (1-10 rows/columns)
+5. Set image size (50-300px)
+6. Toggle borders if desired
+7. Generate patchwork
 
-```text
-/
-├── public/
+## Project Structure
+
+```
+patchwork-astro/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   │   ├── index.astro
+│   │   ├── patchwork.jpg.ts
+│   │   └── api/cache-stats.json.ts
+│   ├── services/
+│   │   ├── cache-manager.ts
+│   │   ├── lastfm.ts
+│   │   ├── listenbrainz.ts
+│   │   └── patchwork-generator.ts
+│   └── styles/main.css
+├── public/assets/
+├── cache/
+├── Dockerfile
+├── docker-compose.yml
+└── astro.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Configuration
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Environment Variables
 
-Any static assets, like images, can be placed in the `public/` directory.
+Create a `.env` file from `.env.example`:
 
-## 🧞 Commands
+```bash
+cp .env.example .env
+```
 
-All commands are run from the root of the project, from a terminal:
+**Required:**
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `LASTFM_API_KEY` | Your Last.fm API key ([Get one](https://www.last.fm/api/account/create)) | - |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+**Cache TTL Configuration (Optional):**
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `CACHE_TTL_7DAY` | Cache duration for 7-day period (hours) | `6` |
+| `CACHE_TTL_1MONTH` | Cache duration for 1-month period (hours) | `12` |
+| `CACHE_TTL_3MONTH` | Cache duration for 3-month period (hours) | `24` |
+| `CACHE_TTL_6MONTH` | Cache duration for 6-month period (hours) | `48` |
+| `CACHE_TTL_12MONTH` | Cache duration for 12-month period (hours) | `72` |
+| `CACHE_TTL_OVERALL` | Cache duration for overall period (hours) | `168` |
 
-## 👀 Want to learn more?
+**Cache Size Limits (Optional):**
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `CACHE_MAX_SIZE_MB` | Maximum cache size in MB | `1024` (1GB) |
+| `CACHE_MAX_ENTRIES` | Maximum number of cached images | `10000` |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Cache Behavior
+
+The cache uses **dynamic TTL** based on the time period:
+- Short periods (`7day`) have shorter cache (6h) to keep data fresh
+- Long periods (`overall`) have longer cache (7 days) since data changes slowly
+- Expired entries are automatically cleaned up when new images are generated
+
+## API Endpoints
+
+### Generate Patchwork
+
+```
+GET /patchwork.jpg?username=USER&provider=lastfm&period=overall&rows=3&cols=3&size=150&border=normal
+```
+
+Query Parameters:
+- `username` (required) - Last.fm or ListenBrainz username
+- `provider` (optional) - `lastfm` or `listenbrainz` (default: `lastfm`)
+- `period` (optional) - `overall`, `7day`, `1month`, `3month`, `6month`, `12month` (default: `overall`)
+- `rows` (optional) - 1-10 (default: 3)
+- `cols` (optional) - 1-10 (default: 3)
+- `size` (optional) - 50-300 pixels (default: 150)
+- `border` (optional) - `normal` or `none` (default: `normal`)
+
+Response Headers:
+- `X-Cache` - `HIT` or `MISS`
+- `X-Generation-Time` - Generation duration (only on MISS)
+- `X-Image-Width` - Image width in pixels
+- `X-Image-Height` - Image height in pixels
+
+### Cache Statistics
+
+```
+GET /api/cache-stats.json
+```
+
+Returns cache statistics in JSON format.
+
+## Performance
+
+- First generation: ~2-3 seconds (network + image processing)
+- Cached requests: < 50ms (filesystem read)
+- CDN cached: < 10ms
+
+## Migration from PHP
+
+This is a complete rewrite of the [original PHP version](https://github.com/jee-r/Patchwork) with improvements:
+
+- TypeScript for type safety
+- ListenBrainz support added
+- Intelligent caching with dynamic TTL
+- Modern stack (Astro + Sharp vs PHP + GD)
+- Query parameter URLs
+- Better developer experience
+
+## Contributing
+
+Contributions welcome. Please submit a Pull Request.
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file.
+
+## Author
+
+[Jee](https://artz.dev)
+
+## Links
+
+- [Original PHP version](https://github.com/jee-r/Patchwork)
+- [Last.fm API](https://www.last.fm/api)
+- [ListenBrainz API](https://listenbrainz.readthedocs.io/)
