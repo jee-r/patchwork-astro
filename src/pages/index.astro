@@ -214,8 +214,6 @@ import '../styles/main.css';
                 }
 
                 // Get image dimensions from headers
-                const width = response.headers.get('X-Image-Width');
-                const height = response.headers.get('X-Image-Height');
                 const cacheStatus = response.headers.get('X-Cache');
                 const generationTime = response.headers.get('X-Generation-Time');
 
@@ -236,8 +234,9 @@ import '../styles/main.css';
 
                 const fullUrl = window.location.origin + imageUrl;
                 patchworkImg.src = imageUrl;
-                patchworkImg.width = width ? parseInt(width) : 0;
-                patchworkImg.height = height ? parseInt(height) : 0;
+                // Let browser auto-detect dimensions
+                patchworkImg.removeAttribute('width');
+                patchworkImg.removeAttribute('height');
                 downloadBtn.href = imageUrl;
                 patchworkLink.href = fullUrl;
                 patchworkLink.textContent = fullUrl;
