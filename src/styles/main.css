@@ -412,6 +412,15 @@ footer svg {
   display: none !important;
 }
 
+/* LB-only periods: hidden by default, shown when ListenBrainz is selected */
+#lb-periods {
+  display: none;
+}
+
+form:has(#listenbrainz:checked) #lb-periods {
+  display: block;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   nav ul {
