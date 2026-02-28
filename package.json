@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "changelog-latest": "conventional-changelog --config ./changelog-config.mjs -r 1",
+    "changelog": "conventional-changelog --config ./changelog-config.mjs -i CHANGELOG.md -s",
+    "version": "conventional-changelog --config ./changelog-config.mjs -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
@@ -21,5 +24,9 @@
       "sharp",
       "esbuild"
     ]
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0",
+    "conventional-changelog-conventionalcommits": "^9.1.0"
   }
 }
