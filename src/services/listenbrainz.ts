@@ -32,7 +32,10 @@ function mapPeriodToRange(period: string): string {
     '3month': 'quarter',
     '6month': 'half_yearly',
     '12month': 'year',
-    'overall': 'all_time'
+    'overall': 'all_time',
+    'this_week': 'this_week',
+    'this_month': 'this_month',
+    'this_year': 'this_year'
   };
 
   return periodMap[period] || period;

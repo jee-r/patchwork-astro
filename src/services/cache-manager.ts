@@ -38,7 +38,10 @@ class CacheManager {
     '3month': (CACHE_TTL_3MONTH || 24) * 60 * 60 * 1000,
     '6month': (CACHE_TTL_6MONTH || 48) * 60 * 60 * 1000,
     '12month': (CACHE_TTL_12MONTH || 72) * 60 * 60 * 1000,
-    'overall': (CACHE_TTL_OVERALL || 168) * 60 * 60 * 1000
+    'overall': (CACHE_TTL_OVERALL || 168) * 60 * 60 * 1000,
+    'this_week': (CACHE_TTL_7DAY || 6) * 60 * 60 * 1000,
+    'this_month': (CACHE_TTL_1MONTH || 12) * 60 * 60 * 1000,
+    'this_year': (CACHE_TTL_12MONTH || 72) * 60 * 60 * 1000
   };
 
   constructor() {
