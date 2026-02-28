@@ -1,3 +1,21 @@
+## [1.1.0](https://github.com/jee-r/patchwork-astro/compare/v1.0.0...v1.1.0) (2026-02-28)
+
+### Features
+
+* **integrations:** add file-downloader to serve local scripts at build ([5cdf321](https://github.com/jee-r/patchwork-astro/commit/5cdf321dc5023379cc5cd3ac3b7ac442dd389eb2))
+* **matomo:** add server-side page view tracking helper ([a6fe94d](https://github.com/jee-r/patchwork-astro/commit/a6fe94d8bd3c20624105633803773399dd86be1b))
+* **matomo:** configure opt-in analytics integration with env vars ([3bd3d1a](https://github.com/jee-r/patchwork-astro/commit/3bd3d1ad4e3a993eba84cc636f5648ff35918a27))
+* **patchwork:** track image generation as matomo page view ([30ecec5](https://github.com/jee-r/patchwork-astro/commit/30ecec5a1c68d4142cd755d978710f51e160cb16))
+
+### Documentation
+
+* **matomo:** document analytics env vars in readme and env.example ([a734a8b](https://github.com/jee-r/patchwork-astro/commit/a734a8b97682ffd0158560acc6c42d9c3e7c968c))
+* **readme:** add Vercel deployment section ([bf0cd2c](https://github.com/jee-r/patchwork-astro/commit/bf0cd2c16822c43fe6c9db82d9af4f11b8ef2ca6))
+
+### Chores
+
+* **deps:** add astro-matomo dependency ([f349bc1](https://github.com/jee-r/patchwork-astro/commit/f349bc189720fe013e022d4f6a6c14d79a761140))
+* **renovate:** enable platform automerge and switch to pr type ([25513ca](https://github.com/jee-r/patchwork-astro/commit/25513cababa86db1e89da2bc63f44f0fb25a923f))
 ## 1.0.0 (2026-02-28)
 
 ### Features
