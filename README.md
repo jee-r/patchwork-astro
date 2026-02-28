@@ -65,6 +65,12 @@ docker-compose up -d
 
 Application available at http://localhost:3000
 
+### Vercel Deployment
+
+> **Note:** A [Last.fm API key](https://www.last.fm/api/account/create) is required for Last.fm support.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjee-r%2Fpatchwork-astro&env=LASTFM_API_KEY,USE_VERCEL_ADAPTER&envDescription=Last.fm%20API%20key%20required%20for%20Last.fm%20support&envLink=https%3A%2F%2Fgithub.com%2Fjee-r%2Fpatchwork-astro%2Fblob%2Fmain%2F.env.example)
+
 ## Usage
 
 1. Select a provider (Last.fm or ListenBrainz)
