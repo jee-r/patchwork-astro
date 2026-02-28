@@ -134,6 +134,19 @@ cp .env.example .env
 | `CACHE_MAX_SIZE_MB` | Maximum cache size in MB | `1024` (1GB) |
 | `CACHE_MAX_ENTRIES` | Maximum number of cached images | `10000` |
 
+**Matomo Analytics (Optional):**
+
+Disabled by default. All three variables must be explicitly set to enable tracking. Analytics will never load in dev mode, preview, or forks without this configuration.
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `MATOMO_ENABLED` | Set to `true` to enable Matomo | `false` |
+| `MATOMO_HOST` | Your Matomo instance hostname (without `https://`) | - |
+| `MATOMO_SITE_ID` | Site ID from your Matomo instance | - |
+| `MATOMO_TOKEN_AUTH` | Auth token to forward real visitor IP ([generate in Matomo](https://matomo.org/faq/general/faq_114/)) | - |
+
+When enabled, the Matomo tracking script is downloaded from your instance at build time and served locally as `/js/wtfisthis.js` to reduce ad-blocker interference.
+
 ### Cache Behavior
 
 The cache uses **dynamic TTL** based on the time period:
