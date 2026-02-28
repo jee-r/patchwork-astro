@@ -387,7 +387,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-xs);
   flex-wrap: wrap;
 }
 
@@ -404,17 +404,22 @@ footer a:hover {
   text-decoration: underline;
 }
 
-footer a[role="button"] {
-  display: flex;
+footer a.fork-link {
+  display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 0.9rem;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
-footer svg {
-  width: 20px;
-  height: 20px;
+footer a.fork-link:hover {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+footer a.fork-link svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* Utility */
