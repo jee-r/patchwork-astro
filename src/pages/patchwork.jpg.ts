@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { generatePatchwork } from '../services/patchwork-generator';
 import { cacheManager } from '../services/cache-manager';
+import { trackPageView } from '../utils/matomo';
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
@@ -50,6 +51,8 @@ export const GET: APIRoute = async ({ request }) => {
   if (cached) {
     console.log(`✅ Cache HIT: ${params.username} (${params.provider})`);
 
+    void trackPageView(request);
+
     return new Response(cached, {
       status: 200,
       headers: {
@@ -82,6 +85,8 @@ export const GET: APIRoute = async ({ request }) => {
 
     // Save to cache with period for dynamic TTL
     await cacheManager.set(cacheKey, buffer, params.period);
+
+    void trackPageView(request);
 
     return new Response(buffer, {
       status: 200,
