@@ -100,6 +100,15 @@ nav .lov3 {
   color: var(--primary);
 }
 
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
 /* Main Container */
 main {
   flex: 1;
@@ -375,6 +384,7 @@ footer {
   padding: var(--spacing-md);
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--spacing-md);
@@ -450,6 +460,43 @@ form:has(#listenbrainz:checked) #lb-periods {
   .img-link [role="button"] {
     width: 100%;
   }
+}
+
+/* Changelog markdown content */
+.changelog-content h2 {
+  margin-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.changelog-content h2:first-child {
+  margin-top: 0;
+}
+
+.changelog-content h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+}
+
+.changelog-content ul {
+  list-style: disc;
+  padding-left: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.changelog-content a {
+  color: var(--primary);
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+}
+
+.changelog-content a:hover {
+  text-decoration: underline;
 }
 
 /* Animations */
