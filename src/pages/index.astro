@@ -1,6 +1,7 @@
 ---
 import '../styles/main.css';
 import pkg from '../../package.json';
+import { LASTFM_ENABLED } from 'astro:env/server';
 ---
 
 <!DOCTYPE html>
@@ -44,17 +45,22 @@ import pkg from '../../package.json';
                     <input type="text" id="username" name="username" placeholder="username" required>
                 </label>
 
+                {(LASTFM_ENABLED) && (
                 <fieldset>
                     <legend>Provider</legend>
                     <label>
-                        <input type="radio" id="lastfm" name="provider" value="lastfm" checked>
-                        Last.fm
-                    </label>
-                    <label>
-                        <input type="radio" id="listenbrainz" name="provider" value="listenbrainz">
+                        <input type="radio" id="listenbrainz" name="provider" value="listenbrainz" checked>
                         ListenBrainz
                     </label>
+                    <label>
+                        <input type="radio" id="lastfm" name="provider" value="lastfm">
+                        Last.fm
+                    </label>
                 </fieldset>
+                )}
+                {!LASTFM_ENABLED && (
+                <input type="hidden" name="provider" value="listenbrainz">
+                )}
 
                 <fieldset class="grid">
                     <legend>Period</legend>
