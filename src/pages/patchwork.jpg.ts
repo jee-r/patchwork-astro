@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { LASTFM_ENABLED } from 'astro:env/server';
 import { generatePatchwork } from '../services/patchwork-generator';
 import { cacheManager } from '../services/cache-manager';
 import { trackPageView } from '../utils/matomo';
@@ -25,18 +26,25 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   const params = {
-    username,
+    username: username.toLowerCase(),
     period: url.searchParams.get('period') || 'overall',
     rows: Math.min(Math.max(parseInt(url.searchParams.get('rows') || '3'), 1), 10),
     cols: Math.min(Math.max(parseInt(url.searchParams.get('cols') || '3'), 1), 10),
     imageSize: Math.min(Math.max(parseInt(url.searchParams.get('size') || '150'), 50), 300),
     border: url.searchParams.get('border') || 'normal',
-    provider: (url.searchParams.get('provider') || 'lastfm') as 'lastfm' | 'listenbrainz'
+    provider: (url.searchParams.get('provider') || 'listenbrainz') as 'lastfm' | 'listenbrainz'
   };
 
   // Validate provider
   if (!['lastfm', 'listenbrainz'].includes(params.provider)) {
     return new Response('Invalid provider. Must be "lastfm" or "listenbrainz"', {
+      status: 400,
+      headers: { 'Content-Type': 'text/plain' }
+    });
+  }
+
+  if (params.provider === 'lastfm' && !LASTFM_ENABLED) {
+    return new Response('Last.fm provider is disabled', {
       status: 400,
       headers: { 'Content-Type': 'text/plain' }
     });
