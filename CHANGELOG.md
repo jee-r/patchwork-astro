@@ -1,3 +1,22 @@
+## [1.3.3](https://github.com/jee-r/patchwork/compare/v1.3.0...v1.3.3) (2026-03-02)
+
+### Documentation
+
+* **changelog:** regenerate from scratch ([af70a45](https://github.com/jee-r/patchwork/commit/af70a45bfeb973f4e256a7bd85b6291e7036b48b))
+
+### Chores
+
+* **assets:** track og-image and whitelist it from gitignore ([ed74f81](https://github.com/jee-r/patchwork/commit/ed74f813e7fc903e7f3802c8cfeae8eaf524684f))
+* **cache:** migrate from @vercel/kv to @upstash/redis ([d5ad750](https://github.com/jee-r/patchwork/commit/d5ad75031181fd44c13e2faffdb485dab1fbd8d9))
+* **deps:** update astro and adapters ([b60cbe9](https://github.com/jee-r/patchwork/commit/b60cbe93743460e9cd92031175e2c2d78964455a))
+* **deps:** update astro monorepo ([#1](https://github.com/jee-r/patchwork/issues/1)) ([089396f](https://github.com/jee-r/patchwork/commit/089396ffd6512fa6d5481921330d56f81f87271e))
+* **deps:** update node.js to v24 ([fd6b8c4](https://github.com/jee-r/patchwork/commit/fd6b8c419aabf68494643a78f994d250755d3a85))
+* **gitignore:** ignore .vercel directory ([d628045](https://github.com/jee-r/patchwork/commit/d628045c9892dd21933a0a7bd46afee44495c78d))
+* **readme:** update GitHub and author URLs ([cbf2a02](https://github.com/jee-r/patchwork/commit/cbf2a024d993c0655e639c0b96905af300cc3d24))
+
+### Code Refactoring
+
+* **layout:** extract shared head, nav and footer into Layout component ([fbaa5ee](https://github.com/jee-r/patchwork/commit/fbaa5eef311cebc3cc445564f81f670376673165))
 ## [1.3.2](https://github.com/jee-r/patchwork/compare/v1.3.1...v1.3.2) (2026-03-02)
 
 ### Documentation
