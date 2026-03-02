@@ -31,7 +31,7 @@ Album cover collage generator for Last.fm and ListenBrainz.
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/jee-r/patchwork-astro.git
+   git clone https://github.com/jee-r/patchwork.git
    cd patchwork-astro
    ```
 
@@ -56,7 +56,7 @@ Album cover collage generator for Last.fm and ListenBrainz.
 ### Docker Deployment
 
 ```bash
-git clone https://github.com/jee-r/patchwork-astro.git
+git clone https://github.com/jee-r/patchwork.git
 cd patchwork-astro
 cp .env.example .env
 # Edit .env and add your LASTFM_API_KEY
@@ -212,7 +212,7 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ## Author
 
-[Jee](https://artz.dev)
+[Jee](https://jeer.fr)
 
 ## Links
 
