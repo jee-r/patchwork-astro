@@ -1,3 +1,17 @@
+## [1.3.2](https://github.com/jee-r/patchwork/compare/v1.3.1...v1.3.2) (2026-03-02)
+
+### Documentation
+
+* **changelog:** regenerate from scratch ([50c98c5](https://github.com/jee-r/patchwork/commit/50c98c5579baae43a2db30012468038269baa6d2))
+
+### Chores
+
+* **deps:** update astro and adapters ([cd5611d](https://github.com/jee-r/patchwork/commit/cd5611d93be682b7dd7861c56b3f84edf77a37fb))
+* **readme:** update GitHub and author URLs ([a26c616](https://github.com/jee-r/patchwork/commit/a26c616741ee8d83f26ad27ac54e4d04406fc89c))
+
+### Code Refactoring
+
+* **layout:** extract shared head, nav and footer into Layout component ([d2163b0](https://github.com/jee-r/patchwork/commit/d2163b03cd1a4cbe28cf7019110ec256591aea5a))
 ## [1.3.1](https://github.com/jee-r/patchwork/compare/v1.3.0...v1.3.1) (2026-03-02)
 
 ### Chores
