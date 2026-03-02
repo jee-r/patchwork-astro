@@ -1,3 +1,12 @@
+## [1.3.0](https://github.com/jee-r/patchwork-astro/compare/v1.2.0...v1.3.0) (2026-03-02)
+
+### Features
+
+* **seo:** add OG and Twitter Card meta tags to all pages ([d03ac4b](https://github.com/jee-r/patchwork-astro/commit/d03ac4bc507d82e5a9bcd874178d69f3226ff9f7))
+
+### Chores
+
+* **favicon:** replace root favicon with updated assets version ([1b939a2](https://github.com/jee-r/patchwork-astro/commit/1b939a23f858391ecf53c8c0b370f26af9e5a64e))
 ## [1.2.0](https://github.com/jee-r/patchwork-astro/compare/v1.1.0...v1.2.0) (2026-03-01)
 
 ### Features
