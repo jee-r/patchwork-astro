@@ -12,11 +12,11 @@
     "version": "conventional-changelog --config ./changelog-config.mjs -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "dependencies": {
-    "@astrojs/node": "^9.5.1",
-    "@astrojs/vercel": "^9.0.2",
+    "@astrojs/node": "^9.5.4",
+    "@astrojs/vercel": "^9.0.4",
     "@types/node": "^25.0.3",
     "@vercel/kv": "^3.0.0",
-    "astro": "^5.16.6",
+    "astro": "^5.18.0",
     "astro-matomo": "^1.9.0",
     "sharp": "^0.34.5"
   },
