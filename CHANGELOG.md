@@ -1,3 +1,8 @@
+## [1.3.1](https://github.com/jee-r/patchwork-astro/compare/v1.3.0...v1.3.1) (2026-03-02)
+
+### Chores
+
+* **assets:** track og-image and whitelist it from gitignore ([ed74f81](https://github.com/jee-r/patchwork-astro/commit/ed74f813e7fc903e7f3802c8cfeae8eaf524684f))
 ## [1.3.0](https://github.com/jee-r/patchwork-astro/compare/v1.2.0...v1.3.0) (2026-03-02)
 
 ### Features
