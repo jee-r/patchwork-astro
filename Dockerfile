@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:24-alpine AS base
 
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
@@ -31,7 +31,7 @@ COPY . .
 RUN pnpm build
 
 # Runtime stage
-FROM node:20-alpine AS runtime
+FROM node:24-alpine AS runtime
 
 # Install Sharp runtime dependencies only
 RUN apk add --no-cache \
