@@ -23,6 +23,9 @@ cache/
 *.png
 metadata.json
 
+# exceptions for static assets
+!public/assets/og-image.jpg
+
 # macOS-specific files
 .DS_Store
 
