@@ -35,7 +35,7 @@ importers:
         version: 5.0.0(conventional-commits-filter@5.0.0)
       conventional-changelog-conventionalcommits:
         specifier: ^9.1.0
-        version: 9.2.0
+        version: 9.3.0
 
 packages:
 
@@ -1022,8 +1022,8 @@ packages:
     resolution: {integrity: sha512-eOvlTO6OcySPyyyk8pKz2dP4jjElYunj9hn9/s0OB+gapTO8zwS9UQWrZ1pmF2hFs3vw1xhonOLGcGjy/zgsuA==}
     engines: {node: '>=18'}
 
-  conventional-changelog-conventionalcommits@9.2.0:
-    resolution: {integrity: sha512-fCf+ODjseueTV09wVBoC0HXLi3OyuBJ+HfE3L63Khxqnr99f9nUcnQh3a15lCWHlGLihyZShW/mVVkBagr9JvQ==}
+  conventional-changelog-conventionalcommits@9.3.0:
+    resolution: {integrity: sha512-kYFx6gAyjSIMwNtASkI3ZE99U1fuVDJr0yTYgVy+I2QG46zNZfl2her+0+eoviG82c5WQvW1jMt1eOQTeJLodA==}
     engines: {node: '>=18'}
 
   conventional-changelog-core@8.0.0:
@@ -3082,7 +3082,7 @@ snapshots:
     dependencies:
       compare-func: 2.0.0
 
-  conventional-changelog-conventionalcommits@9.2.0:
+  conventional-changelog-conventionalcommits@9.3.0:
     dependencies:
       compare-func: 2.0.0
 
