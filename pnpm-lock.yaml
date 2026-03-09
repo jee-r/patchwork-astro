@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@astrojs/node':
         specifier: ^9.5.4
-        version: 9.5.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))
+        version: 9.5.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))
       '@astrojs/vercel':
         specifier: ^9.0.4
-        version: 9.0.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))(rollup@4.54.0)
+        version: 9.0.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))(rollup@4.54.0)
       '@types/node':
         specifier: ^25.0.3
         version: 25.3.5
       '@upstash/redis':
         specifier: ^1.36.3
-        version: 1.36.3
+        version: 1.36.4
       astro:
         specifier: ^5.18.0
-        version: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
+        version: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
       astro-matomo:
         specifier: ^1.9.0
-        version: 1.9.0(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))
+        version: 1.9.0(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
@@ -782,8 +782,8 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@upstash/redis@1.36.3':
-    resolution: {integrity: sha512-wxo1ei4OHDHm4UGMgrNVz9QUEela9N/Iwi4p1JlHNSowQiPi+eljlGnfbZVkV0V4PIrjGtGFJt5GjWM5k28enA==}
+  '@upstash/redis@1.36.4':
+    resolution: {integrity: sha512-w4s/msmyMqxOxaVhC8TQ2whJ77+Zd8YaSFokXL4mULQopaYb4xNJcm/PedtFQyLJn65nneySw9IwYnlMBBmFHg==}
 
   '@vercel/analytics@1.6.1':
     resolution: {integrity: sha512-oH9He/bEM+6oKlv3chWuOOcp8Y6fo6/PSro8hEkgCW3pu9/OiCXiUpRUogDh3Fs3LH2sosDrx8CxeOLBEE+afg==}
@@ -2278,10 +2278,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.5.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))':
+  '@astrojs/node@9.5.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
-      astro: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
+      astro: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
       send: 1.2.1
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -2303,14 +2303,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/vercel@9.0.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))(rollup@4.54.0)':
+  '@astrojs/vercel@9.0.4(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3))(rollup@4.54.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@vercel/analytics': 1.6.1
       '@vercel/functions': 2.2.13
       '@vercel/nft': 0.30.4(rollup@4.54.0)
       '@vercel/routing-utils': 5.3.1
-      astro: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
+      astro: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
       esbuild: 0.25.12
       tinyglobby: 0.2.15
     transitivePeerDependencies:
@@ -2788,7 +2788,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@upstash/redis@1.36.3':
+  '@upstash/redis@1.36.4':
     dependencies:
       uncrypto: 0.1.3
 
@@ -2800,7 +2800,7 @@ snapshots:
 
   '@vercel/kv@3.0.0':
     dependencies:
-      '@upstash/redis': 1.36.3
+      '@upstash/redis': 1.36.4
     optional: true
 
   '@vercel/nft@0.30.4(rollup@4.54.0)':
@@ -2881,11 +2881,11 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro-matomo@1.9.0(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)):
+  astro-matomo@1.9.0(astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)):
     dependencies:
-      astro: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
+      astro: 5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3)
 
-  astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3):
+  astro@5.18.0(@types/node@25.3.5)(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)(rollup@4.54.0)(typescript@5.9.3):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -2940,7 +2940,7 @@ snapshots:
       ultrahtml: 1.6.0
       unifont: 0.7.4
       unist-util-visit: 5.0.0
-      unstorage: 1.17.4(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)
+      unstorage: 1.17.4(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0)
       vfile: 6.0.3
       vite: 6.4.1(@types/node@25.3.5)
       vitefu: 1.1.1(vite@6.4.1(@types/node@25.3.5))
@@ -4462,7 +4462,7 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  unstorage@1.17.4(@upstash/redis@1.36.3)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0):
+  unstorage@1.17.4(@upstash/redis@1.36.4)(@vercel/functions@2.2.13)(@vercel/kv@3.0.0):
     dependencies:
       anymatch: 3.1.3
       chokidar: 5.0.0
@@ -4473,7 +4473,7 @@ snapshots:
       ofetch: 1.5.1
       ufo: 1.6.3
     optionalDependencies:
-      '@upstash/redis': 1.36.3
+      '@upstash/redis': 1.36.4
       '@vercel/functions': 2.2.13
       '@vercel/kv': 3.0.0
 
