@@ -1,0 +1,15 @@
+name: Keep Upstash Alive
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # tous les jours à 03:00 UTC
+  workflow_dispatch: # permet de lancer manuellement
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call patchwork endpoint
+        run: |
+          curl -s "https://patchwork.jeer.fr/patchwork.jpg?username=mov3&provider=listenbrainz&period=7day&rows=2&cols=2&size=150&border=normal" > /dev/null
